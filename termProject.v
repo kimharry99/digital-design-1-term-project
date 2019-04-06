@@ -18,8 +18,11 @@ module termProject(
 	parameter Seg0 = 7'b000_0001;
 	parameter SegX = 7'b111_1111;
 	
-	//input SW[15:12] + SW SW[7:4] = HEX0
-	bcd_adder bcdadd(car1,result_out2,data_in1,data_in3,1'b0);
+	//input SW[15:12] + SW[7:4] = HEX0
+	//1's digit
+	bcd_adder bcdadd1(car1,result_out2,data_in2,data_in4,1'b0);
+	//10's digit
+	bcd_adder bcdadd2(overflow_underflow,result_out1,data_in1,data_in3,car1);
 	always @(*)
 	begin
 	data_in1 = SW[15:12];
@@ -97,6 +100,19 @@ module termProject(
 			0: HEX0 = Seg0;
 			default: HEX0 = SegX;
 		endcase
+		case(result_out1)
+			9: HEX1 = Seg9;
+			8: HEX1 = Seg8;
+			7: HEX1 = Seg7;
+			6: HEX1 = Seg6;
+			5: HEX1 = Seg5;
+			4: HEX1 = Seg4;
+			3: HEX1 = Seg3;
+			2: HEX1 = Seg2;
+			1: HEX1 = Seg1;
+			0: HEX1 = Seg0;
+			default: HEX1 = SegX;
+		endcase
 	end
 	
 endmodule
@@ -110,7 +126,7 @@ module bcd_adder(carout, result, in1,in2,cin);
 	wire car1,car2;
 	wire [3:0] sum1,temp_addend; //result binary data
 	
-	full_adder fulladd1(sum1,car1,in1,in2,1'b0);
+	full_adder fulladd1(sum1,car1,in1,in2,cin);
 	assign carout = (sum1[3]&sum1[2])|(sum1[3]&sum1[1])|car1;
 	assign temp_addend[0]=0;
 	assign temp_addend[1]=carout;
