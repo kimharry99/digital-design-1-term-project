@@ -88,3 +88,8 @@ db/termProject.sta_cmp.7_slow_1200mv_85c.tdb
 db/termProject.map.kpt
 db/termProject.map.hdb
 db/termProject.eco.cdb
+termProject.map.smsg
+db/termProject.(2).cnf.cdb
+db/termProject.(1).cnf.cdb
+db/termProject.(1).cnf.hdb
+db/termProject.(2).cnf.hdb
