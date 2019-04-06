@@ -1,6 +1,7 @@
 module termProject(
 	input [16:0] SW,
-	output reg [0:6] HEX7,HEX6,HEX5,HEX4,HEX1,HEX0
+	output reg [0:6] HEX7,HEX6,HEX5,HEX4,HEX1,HEX0,
+	output reg [8:0] LEDG
 	);
 	wire [3:0]result_out1,result_out2;
 	wire car1,overflow_underflow;
@@ -87,32 +88,41 @@ module termProject(
 			0: HEX4 = Seg0;
 			default: HEX4 = SegX;
 		endcase
-		case(result_out2)
-			9: HEX0 = Seg9;
-			8: HEX0 = Seg8;
-			7: HEX0 = Seg7;
-			6: HEX0 = Seg6;
-			5: HEX0 = Seg5;
-			4: HEX0 = Seg4;
-			3: HEX0 = Seg3;
-			2: HEX0 = Seg2;
-			1: HEX0 = Seg1;
-			0: HEX0 = Seg0;
-			default: HEX0 = SegX;
-		endcase
-		case(result_out1)
-			9: HEX1 = Seg9;
-			8: HEX1 = Seg8;
-			7: HEX1 = Seg7;
-			6: HEX1 = Seg6;
-			5: HEX1 = Seg5;
-			4: HEX1 = Seg4;
-			3: HEX1 = Seg3;
-			2: HEX1 = Seg2;
-			1: HEX1 = Seg1;
-			0: HEX1 = Seg0;
-			default: HEX1 = SegX;
-		endcase
+		LEDG[8]=overflow_underflow;
+		if(overflow_underflow==0)
+		begin
+			case(result_out2)
+				9: HEX0 = Seg9;
+				8: HEX0 = Seg8;
+				7: HEX0 = Seg7;
+				6: HEX0 = Seg6;
+				5: HEX0 = Seg5;
+				4: HEX0 = Seg4;
+				3: HEX0 = Seg3;
+				2: HEX0 = Seg2;
+				1: HEX0 = Seg1;
+				0: HEX0 = Seg0;
+				default: HEX0 = SegX;
+			endcase
+			case(result_out1)
+				9: HEX1 = Seg9;
+				8: HEX1 = Seg8;
+				7: HEX1 = Seg7;
+				6: HEX1 = Seg6;
+				5: HEX1 = Seg5;
+				4: HEX1 = Seg4;
+				3: HEX1 = Seg3;
+				2: HEX1 = Seg2;
+				1: HEX1 = Seg1;
+				0: HEX1 = Seg0;
+				default: HEX1 = SegX;
+			endcase
+		end
+		else
+		begin
+		HEX1 = SegX;
+		HEX0 = SegX;
+		end
 	end
 	
 endmodule
