@@ -12,7 +12,8 @@ module termProject(
 	parameter Seg3 = 7'b000_0110; parameter Seg2 = 7'b001_0010; parameter Seg1 = 7'b100_1111; 
 	parameter Seg0 = 7'b000_0001; parameter SegX = 7'b111_1111;
 	
-	bcd_8bit_adder(overflow_underflow,result_out1,result_out2,operator,data_in1,data_in2,data_in3,data_in4);
+	//bcd_8bit_adder(overflow_underflow,result_out1,result_out2,operator,data_in1,data_in2,data_in3,data_in4);
+	nines_complement(result_out1,data_in1);
 	always @(*)
 	begin
 	data_in1 = SW[15:12];
@@ -175,4 +176,27 @@ module full_adder(sum,car, a, b, cin);
 	assign sum[3]=a[3] ^ b[3] ^ c[2];
 	assign car=((a[3] ^ b[3]) & c[2]) | (a[3] & b[3]);
 
+endmodule
+
+module nines_complement(nines_c,in);
+     output [3:0]nines_c;
+     input [3:0]in;
+     
+     assign nines_c[3]=~in[3]&~in[2]&~in[1];
+     assign nines_c[2]=in[2]&~in[1]|~in[2]&in[1];
+     assign nines_c[1]=in[1];
+     assign nines_c[0]=~in[0];
+     
+endmodule
+
+module tens_complement(tens_c_10,tens_c_1,in_10,in_1);
+    output [3:0] tens_c_10,tens_c_1;
+    input [3:0] in_10,in_1;
+    wire[3:0] nines_c_10,nines_c_1;
+    wire car;
+
+    nines_complement _9c1(nines_c_10,in_10);
+    nines_complement _9c2(nines_c_1,in_1);
+    bcd_8bit_adder add1(overflow, tens_c_10, tens_c_1, 0, nines_c_10,nines_c_1,4'b0000,4'b0001);
+    
 endmodule
