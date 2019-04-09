@@ -1,12 +1,12 @@
 |termProject
-SW[0] => Decoder3.IN3
-SW[1] => Decoder3.IN2
-SW[2] => Decoder3.IN1
-SW[3] => Decoder3.IN0
-SW[4] => Decoder2.IN3
-SW[5] => Decoder2.IN2
-SW[6] => Decoder2.IN1
-SW[7] => Decoder2.IN0
+SW[0] => data_in4[0].IN1
+SW[1] => data_in4[1].IN1
+SW[2] => data_in4[2].IN1
+SW[3] => data_in4[3].IN1
+SW[4] => data_in3[0].IN1
+SW[5] => data_in3[1].IN1
+SW[6] => data_in3[2].IN1
+SW[7] => data_in3[3].IN1
 SW[8] => data_in2[0].IN1
 SW[9] => data_in2[1].IN1
 SW[10] => data_in2[2].IN1
@@ -15,7 +15,7 @@ SW[12] => data_in1[0].IN1
 SW[13] => data_in1[1].IN1
 SW[14] => data_in1[2].IN1
 SW[15] => data_in1[3].IN1
-SW[16] => ~NO_FANOUT~
+SW[16] => operator.IN1
 HEX7[6] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
 HEX7[5] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
 HEX7[4] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
@@ -44,20 +44,20 @@ HEX4[3] <= WideOr24.DB_MAX_OUTPUT_PORT_TYPE
 HEX4[2] <= WideOr23.DB_MAX_OUTPUT_PORT_TYPE
 HEX4[1] <= WideOr22.DB_MAX_OUTPUT_PORT_TYPE
 HEX4[0] <= WideOr21.DB_MAX_OUTPUT_PORT_TYPE
-HEX1[6] <= WideOr41.DB_MAX_OUTPUT_PORT_TYPE
-HEX1[5] <= WideOr40.DB_MAX_OUTPUT_PORT_TYPE
-HEX1[4] <= WideOr39.DB_MAX_OUTPUT_PORT_TYPE
-HEX1[3] <= WideOr38.DB_MAX_OUTPUT_PORT_TYPE
-HEX1[2] <= WideOr37.DB_MAX_OUTPUT_PORT_TYPE
-HEX1[1] <= WideOr36.DB_MAX_OUTPUT_PORT_TYPE
-HEX1[0] <= WideOr35.DB_MAX_OUTPUT_PORT_TYPE
-HEX0[6] <= WideOr34.DB_MAX_OUTPUT_PORT_TYPE
-HEX0[5] <= WideOr33.DB_MAX_OUTPUT_PORT_TYPE
-HEX0[4] <= WideOr32.DB_MAX_OUTPUT_PORT_TYPE
-HEX0[3] <= WideOr31.DB_MAX_OUTPUT_PORT_TYPE
-HEX0[2] <= WideOr30.DB_MAX_OUTPUT_PORT_TYPE
-HEX0[1] <= WideOr29.DB_MAX_OUTPUT_PORT_TYPE
-HEX0[0] <= WideOr28.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[6] <= HEX1.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[5] <= HEX1.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[4] <= HEX1.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[3] <= HEX1.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[2] <= HEX1.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[1] <= HEX1.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[0] <= HEX1.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[6] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[5] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[4] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[3] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[2] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[1] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[0] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
 LEDG[0] <= <GND>
 LEDG[1] <= <GND>
 LEDG[2] <= <GND>
@@ -66,10 +66,47 @@ LEDG[4] <= <GND>
 LEDG[5] <= <GND>
 LEDG[6] <= <GND>
 LEDG[7] <= <GND>
-LEDG[8] <= <GND>
+LEDG[8] <= bcd_8bit_subtractor:comb_3.port0
 
 
-|termProject|tens_complement:comb_3
+|termProject|bcd_8bit_subtractor:comb_3
+underflow <= underflow.DB_MAX_OUTPUT_PORT_TYPE
+sub_10[0] <= sub_10.DB_MAX_OUTPUT_PORT_TYPE
+sub_10[1] <= sub_10.DB_MAX_OUTPUT_PORT_TYPE
+sub_10[2] <= sub_10.DB_MAX_OUTPUT_PORT_TYPE
+sub_10[3] <= sub_10.DB_MAX_OUTPUT_PORT_TYPE
+sub_1[0] <= sub_1.DB_MAX_OUTPUT_PORT_TYPE
+sub_1[1] <= sub_1.DB_MAX_OUTPUT_PORT_TYPE
+sub_1[2] <= sub_1.DB_MAX_OUTPUT_PORT_TYPE
+sub_1[3] <= sub_1.DB_MAX_OUTPUT_PORT_TYPE
+operator => underflow.IN1
+operator => sub_10.IN1
+operator => sub_1.IN1
+operator => sub_10.IN1
+operator => sub_1.IN1
+operator => sub_10.IN1
+operator => sub_1.IN1
+operator => sub_10.IN1
+operator => sub_1.IN1
+in1_10[0] => in1_10[0].IN1
+in1_10[1] => in1_10[1].IN1
+in1_10[2] => in1_10[2].IN1
+in1_10[3] => in1_10[3].IN1
+in1_1[0] => in1_1[0].IN1
+in1_1[1] => in1_1[1].IN1
+in1_1[2] => in1_1[2].IN1
+in1_1[3] => in1_1[3].IN1
+in2_10[0] => in2_10[0].IN1
+in2_10[1] => in2_10[1].IN1
+in2_10[2] => in2_10[2].IN1
+in2_10[3] => in2_10[3].IN1
+in2_1[0] => in2_1[0].IN1
+in2_1[1] => in2_1[1].IN1
+in2_1[2] => in2_1[2].IN1
+in2_1[3] => in2_1[3].IN1
+
+
+|termProject|bcd_8bit_subtractor:comb_3|tens_complement:comb_7
 tens_c_10[0] <= bcd_8bit_adder:add1.port1
 tens_c_10[1] <= bcd_8bit_adder:add1.port1
 tens_c_10[2] <= bcd_8bit_adder:add1.port1
@@ -88,7 +125,7 @@ in_1[2] => in_1[2].IN1
 in_1[3] => in_1[3].IN1
 
 
-|termProject|tens_complement:comb_3|nines_complement:_9c1
+|termProject|bcd_8bit_subtractor:comb_3|tens_complement:comb_7|nines_complement:_9c1
 nines_c[0] <= in[0].DB_MAX_OUTPUT_PORT_TYPE
 nines_c[1] <= in[1].DB_MAX_OUTPUT_PORT_TYPE
 nines_c[2] <= nines_c.DB_MAX_OUTPUT_PORT_TYPE
@@ -104,7 +141,7 @@ in[2] => nines_c.IN1
 in[3] => nines_c.IN1
 
 
-|termProject|tens_complement:comb_3|nines_complement:_9c2
+|termProject|bcd_8bit_subtractor:comb_3|tens_complement:comb_7|nines_complement:_9c2
 nines_c[0] <= in[0].DB_MAX_OUTPUT_PORT_TYPE
 nines_c[1] <= in[1].DB_MAX_OUTPUT_PORT_TYPE
 nines_c[2] <= nines_c.DB_MAX_OUTPUT_PORT_TYPE
@@ -120,7 +157,7 @@ in[2] => nines_c.IN1
 in[3] => nines_c.IN1
 
 
-|termProject|tens_complement:comb_3|bcd_8bit_adder:add1
+|termProject|bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1
 overflow <= overflow.DB_MAX_OUTPUT_PORT_TYPE
 sum_10[0] <= sum_10.DB_MAX_OUTPUT_PORT_TYPE
 sum_10[1] <= sum_10.DB_MAX_OUTPUT_PORT_TYPE
@@ -157,7 +194,7 @@ in2_1[2] => in2_1[2].IN1
 in2_1[3] => in2_1[3].IN1
 
 
-|termProject|tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_7
+|termProject|bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_7
 carout <= temp_addend[2].DB_MAX_OUTPUT_PORT_TYPE
 result[0] <= full_adder:fulladd2.port0
 result[1] <= full_adder:fulladd2.port0
@@ -174,7 +211,7 @@ in2[3] => in2[3].IN1
 cin => cin.IN1
 
 
-|termProject|tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd1
+|termProject|bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd1
 sum[0] <= sum.DB_MAX_OUTPUT_PORT_TYPE
 sum[1] <= sum.DB_MAX_OUTPUT_PORT_TYPE
 sum[2] <= sum.DB_MAX_OUTPUT_PORT_TYPE
@@ -200,7 +237,7 @@ cin => sum.IN1
 cin => c.IN1
 
 
-|termProject|tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd2
+|termProject|bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd2
 sum[0] <= sum.DB_MAX_OUTPUT_PORT_TYPE
 sum[1] <= sum.DB_MAX_OUTPUT_PORT_TYPE
 sum[2] <= sum.DB_MAX_OUTPUT_PORT_TYPE
@@ -226,7 +263,7 @@ cin => sum.IN1
 cin => c.IN1
 
 
-|termProject|tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_8
+|termProject|bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_8
 carout <= temp_addend[2].DB_MAX_OUTPUT_PORT_TYPE
 result[0] <= full_adder:fulladd2.port0
 result[1] <= full_adder:fulladd2.port0
@@ -243,7 +280,7 @@ in2[3] => in2[3].IN1
 cin => cin.IN1
 
 
-|termProject|tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_8|full_adder:fulladd1
+|termProject|bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_8|full_adder:fulladd1
 sum[0] <= sum.DB_MAX_OUTPUT_PORT_TYPE
 sum[1] <= sum.DB_MAX_OUTPUT_PORT_TYPE
 sum[2] <= sum.DB_MAX_OUTPUT_PORT_TYPE
@@ -269,7 +306,182 @@ cin => sum.IN1
 cin => c.IN1
 
 
-|termProject|tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_8|full_adder:fulladd2
+|termProject|bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_8|full_adder:fulladd2
+sum[0] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+sum[1] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+sum[2] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+sum[3] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+car <= car.DB_MAX_OUTPUT_PORT_TYPE
+a[0] => c.IN0
+a[0] => c.IN0
+a[1] => c.IN0
+a[1] => c.IN0
+a[2] => c.IN0
+a[2] => c.IN0
+a[3] => sum.IN0
+a[3] => car.IN0
+b[0] => c.IN1
+b[0] => c.IN1
+b[1] => c.IN1
+b[1] => c.IN1
+b[2] => c.IN1
+b[2] => c.IN1
+b[3] => sum.IN1
+b[3] => car.IN1
+cin => sum.IN1
+cin => c.IN1
+
+
+|termProject|bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8
+overflow <= overflow.DB_MAX_OUTPUT_PORT_TYPE
+sum_10[0] <= sum_10.DB_MAX_OUTPUT_PORT_TYPE
+sum_10[1] <= sum_10.DB_MAX_OUTPUT_PORT_TYPE
+sum_10[2] <= sum_10.DB_MAX_OUTPUT_PORT_TYPE
+sum_10[3] <= sum_10.DB_MAX_OUTPUT_PORT_TYPE
+sum_1[0] <= sum_1.DB_MAX_OUTPUT_PORT_TYPE
+sum_1[1] <= sum_1.DB_MAX_OUTPUT_PORT_TYPE
+sum_1[2] <= sum_1.DB_MAX_OUTPUT_PORT_TYPE
+sum_1[3] <= sum_1.DB_MAX_OUTPUT_PORT_TYPE
+operator => overflow.IN1
+operator => sum_10.IN1
+operator => sum_10.IN1
+operator => sum_10.IN1
+operator => sum_10.IN1
+operator => sum_1.IN1
+operator => sum_1.IN1
+operator => sum_1.IN1
+operator => sum_1.IN1
+in1_10[0] => in1_10[0].IN1
+in1_10[1] => in1_10[1].IN1
+in1_10[2] => in1_10[2].IN1
+in1_10[3] => in1_10[3].IN1
+in1_1[0] => in1_1[0].IN1
+in1_1[1] => in1_1[1].IN1
+in1_1[2] => in1_1[2].IN1
+in1_1[3] => in1_1[3].IN1
+in2_10[0] => in2_10[0].IN1
+in2_10[1] => in2_10[1].IN1
+in2_10[2] => in2_10[2].IN1
+in2_10[3] => in2_10[3].IN1
+in2_1[0] => in2_1[0].IN1
+in2_1[1] => in2_1[1].IN1
+in2_1[2] => in2_1[2].IN1
+in2_1[3] => in2_1[3].IN1
+
+
+|termProject|bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8|bcd_adder:comb_7
+carout <= temp_addend[2].DB_MAX_OUTPUT_PORT_TYPE
+result[0] <= full_adder:fulladd2.port0
+result[1] <= full_adder:fulladd2.port0
+result[2] <= full_adder:fulladd2.port0
+result[3] <= full_adder:fulladd2.port0
+in1[0] => in1[0].IN1
+in1[1] => in1[1].IN1
+in1[2] => in1[2].IN1
+in1[3] => in1[3].IN1
+in2[0] => in2[0].IN1
+in2[1] => in2[1].IN1
+in2[2] => in2[2].IN1
+in2[3] => in2[3].IN1
+cin => cin.IN1
+
+
+|termProject|bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8|bcd_adder:comb_7|full_adder:fulladd1
+sum[0] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+sum[1] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+sum[2] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+sum[3] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+car <= car.DB_MAX_OUTPUT_PORT_TYPE
+a[0] => c.IN0
+a[0] => c.IN0
+a[1] => c.IN0
+a[1] => c.IN0
+a[2] => c.IN0
+a[2] => c.IN0
+a[3] => sum.IN0
+a[3] => car.IN0
+b[0] => c.IN1
+b[0] => c.IN1
+b[1] => c.IN1
+b[1] => c.IN1
+b[2] => c.IN1
+b[2] => c.IN1
+b[3] => sum.IN1
+b[3] => car.IN1
+cin => sum.IN1
+cin => c.IN1
+
+
+|termProject|bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8|bcd_adder:comb_7|full_adder:fulladd2
+sum[0] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+sum[1] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+sum[2] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+sum[3] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+car <= car.DB_MAX_OUTPUT_PORT_TYPE
+a[0] => c.IN0
+a[0] => c.IN0
+a[1] => c.IN0
+a[1] => c.IN0
+a[2] => c.IN0
+a[2] => c.IN0
+a[3] => sum.IN0
+a[3] => car.IN0
+b[0] => c.IN1
+b[0] => c.IN1
+b[1] => c.IN1
+b[1] => c.IN1
+b[2] => c.IN1
+b[2] => c.IN1
+b[3] => sum.IN1
+b[3] => car.IN1
+cin => sum.IN1
+cin => c.IN1
+
+
+|termProject|bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8|bcd_adder:comb_8
+carout <= temp_addend[2].DB_MAX_OUTPUT_PORT_TYPE
+result[0] <= full_adder:fulladd2.port0
+result[1] <= full_adder:fulladd2.port0
+result[2] <= full_adder:fulladd2.port0
+result[3] <= full_adder:fulladd2.port0
+in1[0] => in1[0].IN1
+in1[1] => in1[1].IN1
+in1[2] => in1[2].IN1
+in1[3] => in1[3].IN1
+in2[0] => in2[0].IN1
+in2[1] => in2[1].IN1
+in2[2] => in2[2].IN1
+in2[3] => in2[3].IN1
+cin => cin.IN1
+
+
+|termProject|bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8|bcd_adder:comb_8|full_adder:fulladd1
+sum[0] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+sum[1] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+sum[2] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+sum[3] <= sum.DB_MAX_OUTPUT_PORT_TYPE
+car <= car.DB_MAX_OUTPUT_PORT_TYPE
+a[0] => c.IN0
+a[0] => c.IN0
+a[1] => c.IN0
+a[1] => c.IN0
+a[2] => c.IN0
+a[2] => c.IN0
+a[3] => sum.IN0
+a[3] => car.IN0
+b[0] => c.IN1
+b[0] => c.IN1
+b[1] => c.IN1
+b[1] => c.IN1
+b[2] => c.IN1
+b[2] => c.IN1
+b[3] => sum.IN1
+b[3] => car.IN1
+cin => sum.IN1
+cin => c.IN1
+
+
+|termProject|bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8|bcd_adder:comb_8|full_adder:fulladd2
 sum[0] <= sum.DB_MAX_OUTPUT_PORT_TYPE
 sum[1] <= sum.DB_MAX_OUTPUT_PORT_TYPE
 sum[2] <= sum.DB_MAX_OUTPUT_PORT_TYPE

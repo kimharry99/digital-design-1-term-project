@@ -12,8 +12,7 @@ module termProject(
 	parameter Seg3 = 7'b000_0110; parameter Seg2 = 7'b001_0010; parameter Seg1 = 7'b100_1111; 
 	parameter Seg0 = 7'b000_0001; parameter SegX = 7'b111_1111;
 	
-	//bcd_8bit_adder(overflow_underflow,result_out1,result_out2,operator,data_in1,data_in2,data_in3,data_in4);
-	nines_complement(result_out1,data_in1);
+	bcd_8bit_subtractor(overflow_underflow,result_out1,result_out2,operator,data_in1,data_in2,data_in3,data_in4);
 	always @(*)
 	begin
 	data_in1 = SW[15:12];
@@ -139,6 +138,34 @@ module bcd_8bit_adder(overflow,sum_10,sum_1,operator,in1_10,in1_1,in2_10,in2_1);
 	
 endmodule
 
+module bcd_8bit_subtractor(underflow,sub_10,sub_1,operator,in1_10,in1_1,in2_10,in2_1);
+    output underflow;
+    output[3:0]sub_10,sub_1;
+    input operator;
+    input[3:0]in1_10,in1_1,in2_10,in2_1;
+    wire[3:0]temp_sub_10,temp_sub_1,bit_4_operator;
+    wire[3:0]temp_tens_complement_in2_10,temp_tens_complement_in2_1;
+    wire notunderflow;
+    
+    assign bit_4_operator[3]=operator;
+	assign bit_4_operator[2]=operator;
+	assign bit_4_operator[1]=operator;
+	assign bit_4_operator[0]=operator;
+	
+    tens_complement(temp_tens_complement_in2_10,temp_tens_complement_in2_1,in2_10,in2_1);
+    bcd_8bit_adder(notunderflow,temp_sub_10,temp_sub_1,1'b0,in1_10,in1_1,temp_tens_complement_in2_10,temp_tens_complement_in2_1);
+    
+    always@(*)
+    begin
+	if(temp_tens_complement_in2_10==4'b0000&&temp_tens_complement_in2_1==4'b0000)
+		assign underflow = operator&~operator;
+	else
+		assign underflow=~notunderflow&operator;
+    end
+    assign sub_10 = temp_sub_10&bit_4_operator;
+	assign sub_1 = temp_sub_1&bit_4_operator; 
+    
+endmodule
 module bcd_adder(carout, result, in1,in2,cin);
 	output carout;
 	output [3:0]result;

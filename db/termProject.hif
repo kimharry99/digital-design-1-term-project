@@ -31,7 +31,7 @@ ON
 # case_sensitive
 # source_file
 termproject.v
-a7fdc44a33b9a23cbb846da37665df
+59325eab9de6f338827977d4e5c9f0
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -102,7 +102,7 @@ DEF
 
 # end
 # entity
-tens_complement
+bcd_8bit_subtractor
 # storage
 db|termProject.(1).cnf
 db|termProject.(1).cnf
@@ -113,7 +113,7 @@ ON
 # case_sensitive
 # source_file
 termproject.v
-a7fdc44a33b9a23cbb846da37665df
+59325eab9de6f338827977d4e5c9f0
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -132,7 +132,43 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
 # hierarchies {
-tens_complement:comb_3
+bcd_8bit_subtractor:comb_3
+}
+# macro_sequence
+
+# end
+# entity
+tens_complement
+# storage
+db|termProject.(2).cnf
+db|termProject.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+termproject.v
+59325eab9de6f338827977d4e5c9f0
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+bcd_8bit_subtractor:comb_3|tens_complement:comb_7
 }
 # macro_sequence
 
@@ -140,8 +176,8 @@ tens_complement:comb_3
 # entity
 nines_complement
 # storage
-db|termProject.(2).cnf
-db|termProject.(2).cnf
+db|termProject.(3).cnf
+db|termProject.(3).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
@@ -149,7 +185,7 @@ ON
 # case_sensitive
 # source_file
 termproject.v
-a7fdc44a33b9a23cbb846da37665df
+59325eab9de6f338827977d4e5c9f0
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -168,8 +204,8 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
 # hierarchies {
-tens_complement:comb_3|nines_complement:_9c1
-tens_complement:comb_3|nines_complement:_9c2
+bcd_8bit_subtractor:comb_3|tens_complement:comb_7|nines_complement:_9c1
+bcd_8bit_subtractor:comb_3|tens_complement:comb_7|nines_complement:_9c2
 }
 # macro_sequence
 
@@ -177,8 +213,8 @@ tens_complement:comb_3|nines_complement:_9c2
 # entity
 bcd_8bit_adder
 # storage
-db|termProject.(3).cnf
-db|termProject.(3).cnf
+db|termProject.(4).cnf
+db|termProject.(4).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
@@ -186,7 +222,7 @@ ON
 # case_sensitive
 # source_file
 termproject.v
-a7fdc44a33b9a23cbb846da37665df
+59325eab9de6f338827977d4e5c9f0
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -205,7 +241,8 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
 # hierarchies {
-tens_complement:comb_3|bcd_8bit_adder:add1
+bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1
+bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8
 }
 # macro_sequence
 
@@ -213,8 +250,8 @@ tens_complement:comb_3|bcd_8bit_adder:add1
 # entity
 bcd_adder
 # storage
-db|termProject.(4).cnf
-db|termProject.(4).cnf
+db|termProject.(5).cnf
+db|termProject.(5).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
@@ -222,7 +259,7 @@ ON
 # case_sensitive
 # source_file
 termproject.v
-a7fdc44a33b9a23cbb846da37665df
+59325eab9de6f338827977d4e5c9f0
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -241,8 +278,10 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
 # hierarchies {
-tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_7
-tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_8
+bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_7
+bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_8
+bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8|bcd_adder:comb_7
+bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8|bcd_adder:comb_8
 }
 # macro_sequence
 
@@ -250,8 +289,8 @@ tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_8
 # entity
 full_adder
 # storage
-db|termProject.(5).cnf
-db|termProject.(5).cnf
+db|termProject.(6).cnf
+db|termProject.(6).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
@@ -259,7 +298,7 @@ ON
 # case_sensitive
 # source_file
 termproject.v
-a7fdc44a33b9a23cbb846da37665df
+59325eab9de6f338827977d4e5c9f0
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -278,10 +317,14 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
 # hierarchies {
-tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd1
-tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd2
-tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_8|full_adder:fulladd1
-tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_8|full_adder:fulladd2
+bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd1
+bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd2
+bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_8|full_adder:fulladd1
+bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_8|full_adder:fulladd2
+bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8|bcd_adder:comb_7|full_adder:fulladd1
+bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8|bcd_adder:comb_7|full_adder:fulladd2
+bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8|bcd_adder:comb_8|full_adder:fulladd1
+bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8|bcd_adder:comb_8|full_adder:fulladd2
 }
 # macro_sequence
 
