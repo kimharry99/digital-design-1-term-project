@@ -140,6 +140,7 @@ endmodule
 
 module bcd_8bit_subtractor(underflow,sub_10,sub_1,operator,in1_10,in1_1,in2_10,in2_1);
     output underflow;
+    reg underflow;
     output[3:0]sub_10,sub_1;
     input operator;
     input[3:0]in1_10,in1_1,in2_10,in2_1;
@@ -158,9 +159,9 @@ module bcd_8bit_subtractor(underflow,sub_10,sub_1,operator,in1_10,in1_1,in2_10,i
     always@(*)
     begin
 	if(temp_tens_complement_in2_10==4'b0000&&temp_tens_complement_in2_1==4'b0000)
-		assign underflow = operator&~operator;
+		underflow = 0;
 	else
-		assign underflow=~notunderflow&operator;
+		underflow=~notunderflow&operator;
     end
     assign sub_10 = temp_sub_10&bit_4_operator;
 	assign sub_1 = temp_sub_1&bit_4_operator; 

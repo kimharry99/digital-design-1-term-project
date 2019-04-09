@@ -1,5 +1,5 @@
 Analysis & Synthesis report for termProject
-Wed Apr 10 02:17:48 2019
+Wed Apr 10 02:23:00 2019
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -15,10 +15,10 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
   9. Parameter Settings for User Entity Instance: Top-level Entity: |termProject
- 10. Port Connectivity Checks: "bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8"
- 11. Port Connectivity Checks: "bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd2"
- 12. Port Connectivity Checks: "bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_7"
- 13. Port Connectivity Checks: "bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1"
+ 10. Port Connectivity Checks: "bcd_8bit_subtractor:comb_4|bcd_8bit_adder:comb_8"
+ 11. Port Connectivity Checks: "bcd_8bit_subtractor:comb_4|tens_complement:comb_7|bcd_8bit_adder:add1"
+ 12. Port Connectivity Checks: "bcd_8bit_adder:comb_3|bcd_adder:comb_7|full_adder:fulladd2"
+ 13. Port Connectivity Checks: "bcd_8bit_adder:comb_3|bcd_adder:comb_7"
  14. Analysis & Synthesis Messages
 
 
@@ -45,13 +45,13 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +------------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Apr 10 02:17:48 2019        ;
+; Analysis & Synthesis Status        ; Successful - Wed Apr 10 02:23:00 2019        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; termProject                                  ;
 ; Top-level Entity Name              ; termProject                                  ;
 ; Family                             ; Cyclone IV E                                 ;
-; Total logic elements               ; 97                                           ;
-;     Total combinational functions  ; 97                                           ;
+; Total logic elements               ; 123                                          ;
+;     Total combinational functions  ; 123                                          ;
 ;     Dedicated logic registers      ; 0                                            ;
 ; Total registers                    ; 0                                            ;
 ; Total pins                         ; 68                                           ;
@@ -163,33 +163,33 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+------------------------+---------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                                          ;
-+---------------------------------------------+----------------------------------------+
-; Resource                                    ; Usage                                  ;
-+---------------------------------------------+----------------------------------------+
-; Estimated Total logic elements              ; 97                                     ;
-;                                             ;                                        ;
-; Total combinational functions               ; 97                                     ;
-; Logic element usage by number of LUT inputs ;                                        ;
-;     -- 4 input functions                    ; 70                                     ;
-;     -- 3 input functions                    ; 9                                      ;
-;     -- <=2 input functions                  ; 18                                     ;
-;                                             ;                                        ;
-; Logic elements by mode                      ;                                        ;
-;     -- normal mode                          ; 97                                     ;
-;     -- arithmetic mode                      ; 0                                      ;
-;                                             ;                                        ;
-; Total registers                             ; 0                                      ;
-;     -- Dedicated logic registers            ; 0                                      ;
-;     -- I/O registers                        ; 0                                      ;
-;                                             ;                                        ;
-; I/O pins                                    ; 68                                     ;
-; Maximum fan-out node                        ; bcd_8bit_subtractor:comb_3|underflow~2 ;
-; Maximum fan-out                             ; 15                                     ;
-; Total fan-out                               ; 454                                    ;
-; Average fan-out                             ; 1.95                                   ;
-+---------------------------------------------+----------------------------------------+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimated Total logic elements              ; 123         ;
+;                                             ;             ;
+; Total combinational functions               ; 123         ;
+; Logic element usage by number of LUT inputs ;             ;
+;     -- 4 input functions                    ; 88          ;
+;     -- 3 input functions                    ; 15          ;
+;     -- <=2 input functions                  ; 20          ;
+;                                             ;             ;
+; Logic elements by mode                      ;             ;
+;     -- normal mode                          ; 123         ;
+;     -- arithmetic mode                      ; 0           ;
+;                                             ;             ;
+; Total registers                             ; 0           ;
+;     -- Dedicated logic registers            ; 0           ;
+;     -- I/O registers                        ; 0           ;
+;                                             ;             ;
+; I/O pins                                    ; 68          ;
+; Maximum fan-out node                        ; SW[0]~input ;
+; Maximum fan-out                             ; 17          ;
+; Total fan-out                               ; 548         ;
+; Average fan-out                             ; 2.12        ;
++---------------------------------------------+-------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -197,20 +197,27 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +--------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node           ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                     ; Library Name ;
 +--------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------+--------------+
-; |termProject                         ; 97 (56)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 68   ; 0            ; |termProject                                                                                                            ; work         ;
-;    |bcd_8bit_subtractor:comb_3|      ; 41 (12)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_3                                                                                 ;              ;
-;       |bcd_8bit_adder:comb_8|        ; 19 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8                                                           ;              ;
-;          |bcd_adder:comb_7|          ; 9 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8|bcd_adder:comb_7                                          ;              ;
-;             |full_adder:fulladd1|    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8|bcd_adder:comb_7|full_adder:fulladd1                      ;              ;
-;          |bcd_adder:comb_8|          ; 10 (2)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8|bcd_adder:comb_8                                          ;              ;
-;             |full_adder:fulladd1|    ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8|bcd_adder:comb_8|full_adder:fulladd1                      ;              ;
-;       |tens_complement:comb_7|       ; 10 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_3|tens_complement:comb_7                                                          ;              ;
-;          |bcd_8bit_adder:add1|       ; 10 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1                                      ;              ;
-;             |bcd_adder:comb_7|       ; 5 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_7                     ;              ;
-;                |full_adder:fulladd1| ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd1 ;              ;
-;                |full_adder:fulladd2| ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd2 ;              ;
-;             |bcd_adder:comb_8|       ; 5 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_8                     ;              ;
-;                |full_adder:fulladd1| ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_8|full_adder:fulladd1 ;              ;
+; |termProject                         ; 123 (76)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 68   ; 0            ; |termProject                                                                                                            ; work         ;
+;    |bcd_8bit_adder:comb_3|           ; 20 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_adder:comb_3                                                                                      ;              ;
+;       |bcd_adder:comb_7|             ; 11 (1)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_adder:comb_3|bcd_adder:comb_7                                                                     ;              ;
+;          |full_adder:fulladd1|       ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_adder:comb_3|bcd_adder:comb_7|full_adder:fulladd1                                                 ;              ;
+;          |full_adder:fulladd2|       ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_adder:comb_3|bcd_adder:comb_7|full_adder:fulladd2                                                 ;              ;
+;       |bcd_adder:comb_8|             ; 9 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_adder:comb_3|bcd_adder:comb_8                                                                     ;              ;
+;          |full_adder:fulladd1|       ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_adder:comb_3|bcd_adder:comb_8|full_adder:fulladd1                                                 ;              ;
+;    |bcd_8bit_subtractor:comb_4|      ; 27 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_4                                                                                 ;              ;
+;       |bcd_8bit_adder:comb_8|        ; 17 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_4|bcd_8bit_adder:comb_8                                                           ;              ;
+;          |bcd_adder:comb_7|          ; 9 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_4|bcd_8bit_adder:comb_8|bcd_adder:comb_7                                          ;              ;
+;             |full_adder:fulladd1|    ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_4|bcd_8bit_adder:comb_8|bcd_adder:comb_7|full_adder:fulladd1                      ;              ;
+;             |full_adder:fulladd2|    ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_4|bcd_8bit_adder:comb_8|bcd_adder:comb_7|full_adder:fulladd2                      ;              ;
+;          |bcd_adder:comb_8|          ; 8 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_4|bcd_8bit_adder:comb_8|bcd_adder:comb_8                                          ;              ;
+;             |full_adder:fulladd1|    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_4|bcd_8bit_adder:comb_8|bcd_adder:comb_8|full_adder:fulladd1                      ;              ;
+;       |tens_complement:comb_7|       ; 10 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_4|tens_complement:comb_7                                                          ;              ;
+;          |bcd_8bit_adder:add1|       ; 10 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_4|tens_complement:comb_7|bcd_8bit_adder:add1                                      ;              ;
+;             |bcd_adder:comb_7|       ; 5 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_4|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_7                     ;              ;
+;                |full_adder:fulladd1| ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_4|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd1 ;              ;
+;                |full_adder:fulladd2| ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_4|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd2 ;              ;
+;             |bcd_adder:comb_8|       ; 5 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_4|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_8                     ;              ;
+;                |full_adder:fulladd1| ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|bcd_8bit_subtractor:comb_4|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_8|full_adder:fulladd1 ;              ;
 +--------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -251,7 +258,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +------------------------------------------------------------------------------+
-; Port Connectivity Checks: "bcd_8bit_subtractor:comb_3|bcd_8bit_adder:comb_8" ;
+; Port Connectivity Checks: "bcd_8bit_subtractor:comb_4|bcd_8bit_adder:comb_8" ;
 +----------+-------+----------+------------------------------------------------+
 ; Port     ; Type  ; Severity ; Details                                        ;
 +----------+-------+----------+------------------------------------------------+
@@ -259,29 +266,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------+-------+----------+------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd2" ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                     ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------+
-; car  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                         ;
-; a[3] ; Input  ; Info     ; Stuck at GND                                                                                                ;
-; a[0] ; Input  ; Info     ; Stuck at GND                                                                                                ;
-; cin  ; Input  ; Info     ; Stuck at GND                                                                                                ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------+
-
-
-+--------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_7" ;
-+------+-------+----------+------------------------------------------------------------------------------------------+
-; Port ; Type  ; Severity ; Details                                                                                  ;
-+------+-------+----------+------------------------------------------------------------------------------------------+
-; cin  ; Input ; Info     ; Stuck at GND                                                                             ;
-+------+-------+----------+------------------------------------------------------------------------------------------+
-
-
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1"                                                                                                                     ;
+; Port Connectivity Checks: "bcd_8bit_subtractor:comb_4|tens_complement:comb_7|bcd_8bit_adder:add1"                                                                                                                     ;
 +--------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port         ; Type   ; Severity ; Details                                                                                                                                                                            ;
 +--------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -294,13 +280,34 @@ Note: In order to hide this table in the UI and the text report file, please set
 +--------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "bcd_8bit_adder:comb_3|bcd_adder:comb_7|full_adder:fulladd2"                         ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; car  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; a[3] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; a[0] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; cin  ; Input  ; Info     ; Stuck at GND                                                                        ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------+
+; Port Connectivity Checks: "bcd_8bit_adder:comb_3|bcd_adder:comb_7" ;
++------+-------+----------+------------------------------------------+
+; Port ; Type  ; Severity ; Details                                  ;
++------+-------+----------+------------------------------------------+
+; cin  ; Input ; Info     ; Stuck at GND                             ;
++------+-------+----------+------------------------------------------+
+
+
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Wed Apr 10 02:17:46 2019
+    Info: Processing started: Wed Apr 10 02:22:58 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off termProject -c termProject
 Info: Found 7 design units, including 7 entities, in source file termproject.v
     Info: Found entity 1: termProject
@@ -310,20 +317,21 @@ Info: Found 7 design units, including 7 entities, in source file termproject.v
     Info: Found entity 5: full_adder
     Info: Found entity 6: nines_complement
     Info: Found entity 7: tens_complement
-Warning (10236): Verilog HDL Implicit Net warning at termProject.v(228): created implicit net for "overflow"
-Critical Warning (10846): Verilog HDL Instantiation warning at termProject.v(132): instance has no name
-Critical Warning (10846): Verilog HDL Instantiation warning at termProject.v(133): instance has no name
-Critical Warning (10846): Verilog HDL Instantiation warning at termProject.v(156): instance has no name
-Critical Warning (10846): Verilog HDL Instantiation warning at termProject.v(157): instance has no name
-Critical Warning (10846): Verilog HDL Instantiation warning at termProject.v(15): instance has no name
+Warning (10236): Verilog HDL Implicit Net warning at termProject.v(234): created implicit net for "overflow"
+Critical Warning (10846): Verilog HDL Instantiation warning at termProject.v(138): instance has no name
+Critical Warning (10846): Verilog HDL Instantiation warning at termProject.v(139): instance has no name
+Critical Warning (10846): Verilog HDL Instantiation warning at termProject.v(16): instance has no name
+Critical Warning (10846): Verilog HDL Instantiation warning at termProject.v(162): instance has no name
+Critical Warning (10846): Verilog HDL Instantiation warning at termProject.v(163): instance has no name
+Critical Warning (10846): Verilog HDL Instantiation warning at termProject.v(17): instance has no name
 Info: Elaborating entity "termProject" for the top level hierarchy
 Warning (10034): Output port "LEDG[7..0]" at termProject.v(5) has no driver
-Info: Elaborating entity "bcd_8bit_subtractor" for hierarchy "bcd_8bit_subtractor:comb_3"
-Info: Elaborating entity "tens_complement" for hierarchy "bcd_8bit_subtractor:comb_3|tens_complement:comb_7"
-Info: Elaborating entity "nines_complement" for hierarchy "bcd_8bit_subtractor:comb_3|tens_complement:comb_7|nines_complement:_9c1"
-Info: Elaborating entity "bcd_8bit_adder" for hierarchy "bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1"
-Info: Elaborating entity "bcd_adder" for hierarchy "bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_7"
-Info: Elaborating entity "full_adder" for hierarchy "bcd_8bit_subtractor:comb_3|tens_complement:comb_7|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd1"
+Info: Elaborating entity "bcd_8bit_adder" for hierarchy "bcd_8bit_adder:comb_3"
+Info: Elaborating entity "bcd_adder" for hierarchy "bcd_8bit_adder:comb_3|bcd_adder:comb_7"
+Info: Elaborating entity "full_adder" for hierarchy "bcd_8bit_adder:comb_3|bcd_adder:comb_7|full_adder:fulladd1"
+Info: Elaborating entity "bcd_8bit_subtractor" for hierarchy "bcd_8bit_subtractor:comb_4"
+Info: Elaborating entity "tens_complement" for hierarchy "bcd_8bit_subtractor:comb_4|tens_complement:comb_7"
+Info: Elaborating entity "nines_complement" for hierarchy "bcd_8bit_subtractor:comb_4|tens_complement:comb_7|nines_complement:_9c1"
 Warning: 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning: Output pins are stuck at VCC or GND
     Warning (13410): Pin "LEDG[0]" is stuck at GND
@@ -335,14 +343,14 @@ Warning: Output pins are stuck at VCC or GND
     Warning (13410): Pin "LEDG[6]" is stuck at GND
     Warning (13410): Pin "LEDG[7]" is stuck at GND
 Info: Timing-Driven Synthesis is running
-Info: Implemented 165 device resources after synthesis - the final resource count might be different
+Info: Implemented 191 device resources after synthesis - the final resource count might be different
     Info: Implemented 17 input pins
     Info: Implemented 51 output pins
-    Info: Implemented 97 logic cells
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 17 warnings
-    Info: Peak virtual memory: 231 megabytes
-    Info: Processing ended: Wed Apr 10 02:17:48 2019
+    Info: Implemented 123 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 18 warnings
+    Info: Peak virtual memory: 232 megabytes
+    Info: Processing ended: Wed Apr 10 02:23:00 2019
     Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Total CPU time (on all processors): 00:00:03
 
 

@@ -4,7 +4,8 @@ module termProject(
 	output reg [8:0] LEDG
 	);
 	wire [3:0]result_out1,result_out2;
-	wire car1,overflow_underflow;
+	wire [3:0]temp_sub_out1,temp_sub_out2,temp_sum_out1,temp_sum_out2;
+	wire car1,overflow,underflow,overflow_underflow;
 	reg [3:0]data_in1, data_in2,data_in3,data_in4;
 	reg operator;
 	parameter Seg9 = 7'b000_1100; parameter Seg8 = 7'b000_0000; parameter Seg7 = 7'b000_1111; 
@@ -12,7 +13,12 @@ module termProject(
 	parameter Seg3 = 7'b000_0110; parameter Seg2 = 7'b001_0010; parameter Seg1 = 7'b100_1111; 
 	parameter Seg0 = 7'b000_0001; parameter SegX = 7'b111_1111;
 	
-	bcd_8bit_subtractor(overflow_underflow,result_out1,result_out2,operator,data_in1,data_in2,data_in3,data_in4);
+	bcd_8bit_adder(overflow,temp_sum_out1,temp_sum_out2,operator,data_in1,data_in2,data_in3,data_in4);
+	bcd_8bit_subtractor(underflow,temp_sub_out1,temp_sub_out2,operator,data_in1,data_in2,data_in3,data_in4);
+	
+	assign result_out1 = temp_sub_out1 | temp_sum_out1;
+	assign result_out2 = temp_sub_out2 | temp_sum_out2;
+	assign overflow_underflow = overflow|underflow;
 	always @(*)
 	begin
 	data_in1 = SW[15:12];
