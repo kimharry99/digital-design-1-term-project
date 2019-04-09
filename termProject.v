@@ -3,27 +3,30 @@ module termProject(
 	output reg [0:6] HEX7,HEX6,HEX5,HEX4,HEX1,HEX0,
 	output reg [8:0] LEDG
 	);
-	wire [3:0]result_out1,result_out2;
-	wire car1,overflow_underflow;
+	wire [3:0]result_out1,result_out2,temp_sum10,temp_sum1,temp_sub10,temp_sub1;
+	wire car,overflow,underflow,overflow_underflow;
 	reg [3:0]data_in1, data_in2,data_in3,data_in4;
 	reg operator;
-	parameter Seg9 = 7'b000_1100; 
-	parameter Seg8 = 7'b000_0000; 
-	parameter Seg7 = 7'b000_1111; 
-	parameter Seg6 = 7'b010_0000; 
-	parameter Seg5 = 7'b010_0100;	
-	parameter Seg4 = 7'b100_1100; 
-	parameter Seg3 = 7'b000_0110; 
+	parameter Seg9 = 7'b000_1100;
+	parameter Seg8 = 7'b000_0000;
+	parameter Seg7 = 7'b000_1111;
+	parameter Seg6 = 7'b010_0000;
+	parameter Seg5 = 7'b010_0100;
+	parameter Seg4 = 7'b100_1100;
+	parameter Seg3 = 7'b000_0110;
 	parameter Seg2 = 7'b001_0010; 
-	parameter Seg1 = 7'b100_1111; 
+	parameter Seg1 = 7'b100_1111;
 	parameter Seg0 = 7'b000_0001;
 	parameter SegX = 7'b111_1111;
+
+	bcd_8bit_adder adder_8_1(overflow,temp_sum10,temp_sum1,operator,data_in1,data_in2,data_in3,data_in4);
+	bcd_8bit_subtractor subtractor_8_1(underflow,temp_sub10,temp_sub1,operator,data_in1,data_in2,data_in3,data_in4);
+	assign result_out1 = temp_sum10|temp_sub10;
+	assign result_out2 = temp_sum1|temp_sub1;
+	//assign overflow_underflow=overflow|underflow;
+	assign overflow_underflow=0;
 	
-	//input SW[15:12] + SW[7:4] = HEX0
-	//1's digit
-	bcd_adder bcdadd1(car1,result_out2,data_in2,data_in4,1'b0);
-	//10's digit
-	bcd_adder bcdadd2(overflow_underflow,result_out1,data_in1,data_in3,car1);
+	//decode input data
 	always @(*)
 	begin
 	data_in1 = SW[15:12];
@@ -33,7 +36,7 @@ module termProject(
 	operator = SW[16];
 	end
 	
-	//display data at hex
+	//display data at HEXs and LEDG8
 	always @(*)
 	begin
 		case(data_in1)
@@ -127,14 +130,17 @@ module termProject(
 	
 endmodule
 
-module bcd_adder(carout, result, in1,in2,cin);
+
+//calculate the bcd sum and add 6 to result when result>=10 
+//operator = 1 -> result = 1111
+module bcd_adder(carout, result,in1,in2,cin);
 	output carout;
 	output [3:0]result;
 	input [3:0] in1, in2;
 	input cin;
 	
 	wire car1,car2;
-	wire [3:0] sum1,temp_addend; //result binary data
+	wire [3:0] sum1,temp_addend,temp_result; //result binary data
 	
 	full_adder fulladd1(sum1,car1,in1,in2,cin);
 	assign carout = (sum1[3]&sum1[2])|(sum1[3]&sum1[1])|car1;
@@ -142,9 +148,59 @@ module bcd_adder(carout, result, in1,in2,cin);
 	assign temp_addend[1]=carout;
 	assign temp_addend[2]=carout;
 	assign temp_addend[3]=0;
+	
 	full_adder fulladd2(result,car2,temp_addend,sum1,1'b0);
 endmodule
 
+//operator = 1 >> sum10,sum1=1111
+module bcd_8bit_adder(overflow, sum10, sum1, operator, in1_10,in1_1,in2_10,in2_1);
+	output overflow;
+	//10's digit of sum and 1's digit of sum
+	output [3:0]sum10,sum1;
+	input operator;
+	//data_in1 = in1_10, data_in2 = in1_1 ...
+	input [3:0]in1_10,in1_1,in2_10,in2_1;
+	
+	wire [3:0] sum_onedigit,sum_tendigit,bit4_operator;
+	wire car1,temp_overflow;
+	
+	assign bit4_operator[0] = operator;
+	assign bit4_operator[1] = operator;
+	assign bit4_operator[2] = operator;
+	assign bit4_operator[3] = operator;
+	
+	//1's digit
+	bcd_adder bcdadd1(car1,sum_onedigit,in1_1,in2_1,1'b0);
+	//10's digit
+	bcd_adder bcdadd2(temp_overflow,sum_tendigit,in1_10,in2_10,car1);
+	assign sum1 = sum_onedigit&~bit4_operator;
+	assign sum10 = sum_tendigit&~bit4_operator;
+	assign overflow=temp_overflow&~operator;
+endmodule 
+
+module bcd_8bit_subtractor(underflow,sub10,sub1,operator,in1_10,in1_1,in2_10,in2_1);
+	output underflow;
+	output[3:0] sub10,sub1;
+	input operator;
+	input [3:0] in1_10,in1_1,in2_10,in2_1;
+	wire [3:0]ten_c_in2_10, ten_c_in2_1;
+	wire [3:0]temp_sub10,temp_sub1,bit4_operator;
+	wire notunderflow;
+	
+	tens_complement(ten_c_in2_10,ten_c_in2_1,in2_10,in2_1);
+	
+	assign bit4_operator[0] = operator;
+	assign bit4_operator[1] = operator;
+	assign bit4_operator[2] = operator;
+	assign bit4_operator[3] = operator;
+	
+bcd_8bit_adder bit8add(notunderflow,temp_sub10,temp_sub1,1'b0,in1_10,in1_1,ten_c_in2_10,ten_c_in2_1);
+assign underflow = ~notunderflow&operator;
+assign sub1 = temp_sub1&bit4_operator;
+assign sub10 = temp_sub10&bit4_operator;
+endmodule
+
+//calculate sum of two 
 module full_adder(sum,car, a, b, cin);
 	output [3:0] sum;
 	output car;
@@ -164,4 +220,27 @@ module full_adder(sum,car, a, b, cin);
 	assign sum[3]=a[3] ^ b[3] ^ c[2];
 	assign car=((a[3] ^ b[3]) & c[2]) | (a[3] & b[3]);
 
+endmodule
+
+module nines_complement(nines_c,in);
+	 output [3:0]nines_c;
+	 input [3:0]in;
+	 
+	 assign nines_c[3]=~in[2]&~in[1];
+	 assign nines_c[2]=~in[2]&in[1]+~in[3]&in[2]&~in[1];
+	 assign nines_c[1]=in[1];
+	 assign nines_c[0]=~in[0];
+	 
+endmodule
+
+module tens_complement(tens_c_10,tens_c_1,in_10,in_1);
+	output [3:0] tens_c_10,tens_c_1;
+	input [3:0] in_10,in_1;
+	wire[3:0] nines_c_10,nines_c_1;
+	wire car;
+
+	nines_complement _9c1(nines_c_10,in_10);
+	nines_complement _9c2(nines_c_1,in_1);
+	bcd_8bit_adder add1(overflow, tens_c_10, tens_c_1, 0, nines_c_10,nines_c_1,4'b0000,4'b0001);
+	
 endmodule
