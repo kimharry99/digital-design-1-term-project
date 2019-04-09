@@ -31,7 +31,7 @@ ON
 # case_sensitive
 # source_file
 termproject.v
-3e56392c93fdd81419b9175c6eb98f
+d2decda111ea1d2cc1460eb839c35e6
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -113,7 +113,7 @@ ON
 # case_sensitive
 # source_file
 termproject.v
-3e56392c93fdd81419b9175c6eb98f
+d2decda111ea1d2cc1460eb839c35e6
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -149,7 +149,7 @@ ON
 # case_sensitive
 # source_file
 termproject.v
-3e56392c93fdd81419b9175c6eb98f
+d2decda111ea1d2cc1460eb839c35e6
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -168,8 +168,8 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
 # hierarchies {
-bcd_8bit_adder:comb_3|bcd_adder:comb_3
-bcd_8bit_adder:comb_3|bcd_adder:comb_4
+bcd_8bit_adder:comb_3|bcd_adder:comb_7
+bcd_8bit_adder:comb_3|bcd_adder:comb_8
 }
 # macro_sequence
 
@@ -186,7 +186,7 @@ ON
 # case_sensitive
 # source_file
 termproject.v
-3e56392c93fdd81419b9175c6eb98f
+d2decda111ea1d2cc1460eb839c35e6
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -205,10 +205,10 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
 # hierarchies {
-bcd_8bit_adder:comb_3|bcd_adder:comb_3|full_adder:fulladd1
-bcd_8bit_adder:comb_3|bcd_adder:comb_3|full_adder:fulladd2
-bcd_8bit_adder:comb_3|bcd_adder:comb_4|full_adder:fulladd1
-bcd_8bit_adder:comb_3|bcd_adder:comb_4|full_adder:fulladd2
+bcd_8bit_adder:comb_3|bcd_adder:comb_7|full_adder:fulladd1
+bcd_8bit_adder:comb_3|bcd_adder:comb_7|full_adder:fulladd2
+bcd_8bit_adder:comb_3|bcd_adder:comb_8|full_adder:fulladd1
+bcd_8bit_adder:comb_3|bcd_adder:comb_8|full_adder:fulladd2
 }
 # macro_sequence
 

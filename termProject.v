@@ -12,7 +12,7 @@ module termProject(
 	parameter Seg3 = 7'b000_0110; parameter Seg2 = 7'b001_0010; parameter Seg1 = 7'b100_1111; 
 	parameter Seg0 = 7'b000_0001; parameter SegX = 7'b111_1111;
 	
-	bcd_8bit_adder(overflow_underflow,result_out1,result_out2,data_in1,data_in2,data_in3,data_in4);
+	bcd_8bit_adder(overflow_underflow,result_out1,result_out2,operator,data_in1,data_in2,data_in3,data_in4);
 	always @(*)
 	begin
 	data_in1 = SW[15:12];
@@ -116,14 +116,26 @@ module termProject(
 	
 endmodule
 
-module bcd_8bit_adder(overflow,sum_10,sum_1,in1_10,in1_1,in2_10,in2_1);
+module bcd_8bit_adder(overflow,sum_10,sum_1,operator,in1_10,in1_1,in2_10,in2_1);
 	output overflow;
 	output[3:0]sum_10,sum_1;
+	input operator;
 	input[3:0]in1_10,in1_1,in2_10,in2_1;
-	wire car1;
+	wire[3:0] temp_sum_10,temp_sum_1,bit_4_operator;
+	wire car1,temp_overflow;
 	
-	bcd_adder(car1,sum_1,in1_1,in2_1,1'b0);
-	bcd_adder(overflow,sum_10,in1_10,in2_10,car1);
+	assign bit_4_operator[3]=operator;
+	assign bit_4_operator[2]=operator;
+	assign bit_4_operator[1]=operator;
+	assign bit_4_operator[0]=operator;
+	
+	bcd_adder(car1,temp_sum_1,in1_1,in2_1,1'b0);
+	bcd_adder(temp_overflow,temp_sum_10,in1_10,in2_10,car1);
+	
+	assign overflow=temp_overflow&~operator;
+	assign sum_10 = temp_sum_10&~bit_4_operator;
+	assign sum_1 = temp_sum_1&~bit_4_operator;
+	
 endmodule
 
 module bcd_adder(carout, result, in1,in2,cin);

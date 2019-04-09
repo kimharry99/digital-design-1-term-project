@@ -7,23 +7,12 @@ module termProject(
 	wire car1,overflow_underflow;
 	reg [3:0]data_in1, data_in2,data_in3,data_in4;
 	reg operator;
-	parameter Seg9 = 7'b000_1100; 
-	parameter Seg8 = 7'b000_0000; 
-	parameter Seg7 = 7'b000_1111; 
-	parameter Seg6 = 7'b010_0000; 
-	parameter Seg5 = 7'b010_0100;	
-	parameter Seg4 = 7'b100_1100; 
-	parameter Seg3 = 7'b000_0110; 
-	parameter Seg2 = 7'b001_0010; 
-	parameter Seg1 = 7'b100_1111; 
-	parameter Seg0 = 7'b000_0001;
-	parameter SegX = 7'b111_1111;
+	parameter Seg9 = 7'b000_1100; parameter Seg8 = 7'b000_0000; parameter Seg7 = 7'b000_1111; 
+	parameter Seg6 = 7'b010_0000; parameter Seg5 = 7'b010_0100;	parameter Seg4 = 7'b100_1100; 
+	parameter Seg3 = 7'b000_0110; parameter Seg2 = 7'b001_0010; parameter Seg1 = 7'b100_1111; 
+	parameter Seg0 = 7'b000_0001; parameter SegX = 7'b111_1111;
 	
-	//input SW[15:12] + SW[7:4] = HEX0
-	//1's digit
-	bcd_adder bcdadd1(car1,result_out2,data_in2,data_in4,1'b0);
-	//10's digit
-	bcd_adder bcdadd2(overflow_underflow,result_out1,data_in1,data_in3,car1);
+	bcd_8bit_adder(overflow_underflow,result_out1,result_out2,data_in1,data_in2,data_in3,data_in4);
 	always @(*)
 	begin
 	data_in1 = SW[15:12];
@@ -125,6 +114,16 @@ module termProject(
 		end
 	end
 	
+endmodule
+
+module bcd_8bit_adder(overflow,sum_10,sum_1,in1_10,in1_1,in2_10,in2_1);
+	output overflow;
+	output[3:0]sum_10,sum_1;
+	input[3:0]in1_10,in1_1,in2_10,in2_1;
+	wire car1;
+	
+	bcd_adder(car1,sum_1,in1_1,in2_1,1'b0);
+	bcd_adder(overflow,sum_10,in1_10,in2_10,car1);
 endmodule
 
 module bcd_adder(carout, result, in1,in2,cin);
