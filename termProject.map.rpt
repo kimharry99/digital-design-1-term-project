@@ -1,5 +1,5 @@
 Analysis & Synthesis report for termProject
-Wed Apr 10 01:50:28 2019
+Wed Apr 10 01:52:39 2019
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -15,7 +15,10 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
   9. Parameter Settings for User Entity Instance: Top-level Entity: |termProject
- 10. Analysis & Synthesis Messages
+ 10. Port Connectivity Checks: "tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd2"
+ 11. Port Connectivity Checks: "tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_7"
+ 12. Port Connectivity Checks: "tens_complement:comb_3|bcd_8bit_adder:add1"
+ 13. Analysis & Synthesis Messages
 
 
 
@@ -41,13 +44,13 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +------------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Apr 10 01:50:28 2019        ;
+; Analysis & Synthesis Status        ; Successful - Wed Apr 10 01:52:39 2019        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; termProject                                  ;
 ; Top-level Entity Name              ; termProject                                  ;
 ; Family                             ; Cyclone IV E                                 ;
-; Total logic elements               ; 35                                           ;
-;     Total combinational functions  ; 35                                           ;
+; Total logic elements               ; 48                                           ;
+;     Total combinational functions  ; 48                                           ;
 ;     Dedicated logic registers      ; 0                                            ;
 ; Total registers                    ; 0                                            ;
 ; Total pins                         ; 68                                           ;
@@ -159,42 +162,48 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+------------------------+---------------------------------------------------+
 
 
-+------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                ;
-+---------------------------------------------+--------------+
-; Resource                                    ; Usage        ;
-+---------------------------------------------+--------------+
-; Estimated Total logic elements              ; 35           ;
-;                                             ;              ;
-; Total combinational functions               ; 35           ;
-; Logic element usage by number of LUT inputs ;              ;
-;     -- 4 input functions                    ; 31           ;
-;     -- 3 input functions                    ; 4            ;
-;     -- <=2 input functions                  ; 0            ;
-;                                             ;              ;
-; Logic elements by mode                      ;              ;
-;     -- normal mode                          ; 35           ;
-;     -- arithmetic mode                      ; 0            ;
-;                                             ;              ;
-; Total registers                             ; 0            ;
-;     -- Dedicated logic registers            ; 0            ;
-;     -- I/O registers                        ; 0            ;
-;                                             ;              ;
-; I/O pins                                    ; 68           ;
-; Maximum fan-out node                        ; SW[12]~input ;
-; Maximum fan-out                             ; 14           ;
-; Total fan-out                               ; 239          ;
-; Average fan-out                             ; 1.40         ;
-+---------------------------------------------+--------------+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimated Total logic elements              ; 48          ;
+;                                             ;             ;
+; Total combinational functions               ; 48          ;
+; Logic element usage by number of LUT inputs ;             ;
+;     -- 4 input functions                    ; 43          ;
+;     -- 3 input functions                    ; 2           ;
+;     -- <=2 input functions                  ; 3           ;
+;                                             ;             ;
+; Logic elements by mode                      ;             ;
+;     -- normal mode                          ; 48          ;
+;     -- arithmetic mode                      ; 0           ;
+;                                             ;             ;
+; Total registers                             ; 0           ;
+;     -- Dedicated logic registers            ; 0           ;
+;     -- I/O registers                        ; 0           ;
+;                                             ;             ;
+; I/O pins                                    ; 68          ;
+; Maximum fan-out node                        ; SW[9]~input ;
+; Maximum fan-out                             ; 15          ;
+; Total fan-out                               ; 294         ;
+; Average fan-out                             ; 1.60        ;
++---------------------------------------------+-------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |termProject               ; 35 (35)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 68   ; 0            ; |termProject        ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                         ;
++-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node        ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                          ; Library Name ;
++-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------+--------------+
+; |termProject                      ; 48 (42)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 68   ; 0            ; |termProject                                                                                 ; work         ;
+;    |tens_complement:comb_3|       ; 6 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|tens_complement:comb_3                                                          ;              ;
+;       |bcd_8bit_adder:add1|       ; 6 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|tens_complement:comb_3|bcd_8bit_adder:add1                                      ;              ;
+;          |bcd_adder:comb_7|       ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_7                     ;              ;
+;          |bcd_adder:comb_8|       ; 5 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_8                     ;              ;
+;             |full_adder:fulladd1| ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_8|full_adder:fulladd1 ;              ;
+;             |full_adder:fulladd2| ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |termProject|tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_8|full_adder:fulladd2 ;              ;
++-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -233,13 +242,48 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd2"    ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; car  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; a[3] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; a[0] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; cin  ; Input  ; Info     ; Stuck at GND                                                                        ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_7" ;
++------+-------+----------+---------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                       ;
++------+-------+----------+---------------------------------------------------------------+
+; cin  ; Input ; Info     ; Stuck at GND                                                  ;
++------+-------+----------+---------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "tens_complement:comb_3|bcd_8bit_adder:add1"                                                                                                                                                ;
++--------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                                                                            ;
++--------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; overflow     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
+; operator     ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; operator[-1] ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; in2_10       ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; in2_1[3..1]  ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; in2_1[0]     ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++--------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Wed Apr 10 01:50:27 2019
+    Info: Processing started: Wed Apr 10 01:52:37 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off termProject -c termProject
 Info: Found 6 design units, including 6 entities, in source file termproject.v
     Info: Found entity 1: termProject
@@ -249,34 +293,21 @@ Info: Found 6 design units, including 6 entities, in source file termproject.v
     Info: Found entity 5: nines_complement
     Info: Found entity 6: tens_complement
 Warning (10236): Verilog HDL Implicit Net warning at termProject.v(200): created implicit net for "overflow"
-Critical Warning (10846): Verilog HDL Instantiation warning at termProject.v(16): instance has no name
 Critical Warning (10846): Verilog HDL Instantiation warning at termProject.v(133): instance has no name
 Critical Warning (10846): Verilog HDL Instantiation warning at termProject.v(134): instance has no name
+Critical Warning (10846): Verilog HDL Instantiation warning at termProject.v(16): instance has no name
 Info: Elaborating entity "termProject" for the top level hierarchy
-Warning (10858): Verilog HDL warning at termProject.v(6): object result_out2 used but never assigned
 Warning (10858): Verilog HDL warning at termProject.v(7): object overflow_underflow used but never assigned
 Warning (10036): Verilog HDL or VHDL warning at termProject.v(9): object "operator" assigned a value but never read
-Warning (10030): Net "result_out2.0000" at termProject.v(6) has no driver or initial value, using a default initial value '0'
-Warning (10030): Net "result_out2.0001" at termProject.v(6) has no driver or initial value, using a default initial value '0'
-Warning (10030): Net "result_out2.0010" at termProject.v(6) has no driver or initial value, using a default initial value '0'
-Warning (10030): Net "result_out2.0011" at termProject.v(6) has no driver or initial value, using a default initial value '0'
-Warning (10030): Net "result_out2.0100" at termProject.v(6) has no driver or initial value, using a default initial value '0'
-Warning (10030): Net "result_out2.0101" at termProject.v(6) has no driver or initial value, using a default initial value '0'
-Warning (10030): Net "result_out2.0110" at termProject.v(6) has no driver or initial value, using a default initial value '0'
-Warning (10030): Net "result_out2.0111" at termProject.v(6) has no driver or initial value, using a default initial value '0'
-Warning (10030): Net "result_out2.1000" at termProject.v(6) has no driver or initial value, using a default initial value '0'
-Warning (10030): Net "result_out2.1001" at termProject.v(6) has no driver or initial value, using a default initial value '0'
 Warning (10030): Net "overflow_underflow" at termProject.v(7) has no driver or initial value, using a default initial value '0'
 Warning (10034): Output port "LEDG[7..0]" at termProject.v(5) has no driver
-Info: Elaborating entity "nines_complement" for hierarchy "nines_complement:comb_3"
+Info: Elaborating entity "tens_complement" for hierarchy "tens_complement:comb_3"
+Info: Elaborating entity "nines_complement" for hierarchy "tens_complement:comb_3|nines_complement:_9c1"
+Info: Elaborating entity "bcd_8bit_adder" for hierarchy "tens_complement:comb_3|bcd_8bit_adder:add1"
+Info: Elaborating entity "bcd_adder" for hierarchy "tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_7"
+Info: Elaborating entity "full_adder" for hierarchy "tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd1"
+Warning: 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning: Output pins are stuck at VCC or GND
-    Warning (13410): Pin "HEX0[6]" is stuck at GND
-    Warning (13410): Pin "HEX0[5]" is stuck at GND
-    Warning (13410): Pin "HEX0[4]" is stuck at VCC
-    Warning (13410): Pin "HEX0[3]" is stuck at GND
-    Warning (13410): Pin "HEX0[2]" is stuck at GND
-    Warning (13410): Pin "HEX0[1]" is stuck at GND
-    Warning (13410): Pin "HEX0[0]" is stuck at GND
     Warning (13410): Pin "LEDG[0]" is stuck at GND
     Warning (13410): Pin "LEDG[1]" is stuck at GND
     Warning (13410): Pin "LEDG[2]" is stuck at GND
@@ -289,14 +320,14 @@ Warning: Output pins are stuck at VCC or GND
 Info: Timing-Driven Synthesis is running
 Warning: Design contains 1 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[16]"
-Info: Implemented 103 device resources after synthesis - the final resource count might be different
+Info: Implemented 116 device resources after synthesis - the final resource count might be different
     Info: Implemented 17 input pins
     Info: Implemented 51 output pins
-    Info: Implemented 35 logic cells
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 38 warnings
-    Info: Peak virtual memory: 231 megabytes
-    Info: Processing ended: Wed Apr 10 01:50:28 2019
-    Info: Elapsed time: 00:00:01
+    Info: Implemented 48 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 21 warnings
+    Info: Peak virtual memory: 232 megabytes
+    Info: Processing ended: Wed Apr 10 01:52:39 2019
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 
 

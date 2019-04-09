@@ -13,7 +13,7 @@ module termProject(
 	parameter Seg0 = 7'b000_0001; parameter SegX = 7'b111_1111;
 	
 	//bcd_8bit_adder(overflow_underflow,result_out1,result_out2,operator,data_in1,data_in2,data_in3,data_in4);
-	nines_complement(result_out1,data_in1);
+	tens_complement(result_out1,result_out2,data_in1,data_in2);
 	always @(*)
 	begin
 	data_in1 = SW[15:12];

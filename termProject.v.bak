@@ -182,8 +182,8 @@ module nines_complement(nines_c,in);
      output [3:0]nines_c;
      input [3:0]in;
      
-     assign nines_c[3]=~in[2]&~in[1];
-     assign nines_c[2]=~in[2]&in[1]+~in[3]&in[2]&~in[1];
+     assign nines_c[3]=~in[3]&~in[2]&~in[1];
+     assign nines_c[2]=in[2]&~in[1]|~in[2]&in[1];
      assign nines_c[1]=in[1];
      assign nines_c[0]=~in[0];
      

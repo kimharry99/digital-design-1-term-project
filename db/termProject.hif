@@ -31,7 +31,7 @@ ON
 # case_sensitive
 # source_file
 termproject.v
-13117196c5b3cb536a6dc487b3b026
+a7fdc44a33b9a23cbb846da37665df
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -102,7 +102,7 @@ DEF
 
 # end
 # entity
-nines_complement
+tens_complement
 # storage
 db|termProject.(1).cnf
 db|termProject.(1).cnf
@@ -113,7 +113,7 @@ ON
 # case_sensitive
 # source_file
 termproject.v
-13117196c5b3cb536a6dc487b3b026
+a7fdc44a33b9a23cbb846da37665df
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -132,7 +132,156 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
 # hierarchies {
-nines_complement:comb_3
+tens_complement:comb_3
+}
+# macro_sequence
+
+# end
+# entity
+nines_complement
+# storage
+db|termProject.(2).cnf
+db|termProject.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+termproject.v
+a7fdc44a33b9a23cbb846da37665df
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+tens_complement:comb_3|nines_complement:_9c1
+tens_complement:comb_3|nines_complement:_9c2
+}
+# macro_sequence
+
+# end
+# entity
+bcd_8bit_adder
+# storage
+db|termProject.(3).cnf
+db|termProject.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+termproject.v
+a7fdc44a33b9a23cbb846da37665df
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+tens_complement:comb_3|bcd_8bit_adder:add1
+}
+# macro_sequence
+
+# end
+# entity
+bcd_adder
+# storage
+db|termProject.(4).cnf
+db|termProject.(4).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+termproject.v
+a7fdc44a33b9a23cbb846da37665df
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_7
+tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_8
+}
+# macro_sequence
+
+# end
+# entity
+full_adder
+# storage
+db|termProject.(5).cnf
+db|termProject.(5).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+termproject.v
+a7fdc44a33b9a23cbb846da37665df
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd1
+tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_7|full_adder:fulladd2
+tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_8|full_adder:fulladd1
+tens_complement:comb_3|bcd_8bit_adder:add1|bcd_adder:comb_8|full_adder:fulladd2
 }
 # macro_sequence
 
