@@ -1,5 +1,5 @@
 Flow report for termProject
-Wed Apr 10 02:23:22 2019
+Thu Apr 11 01:01:00 2019
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Flow Summary                                                                      ;
 +------------------------------------+----------------------------------------------+
-; Flow Status                        ; Successful - Wed Apr 10 02:23:22 2019        ;
+; Flow Status                        ; Successful - Thu Apr 11 01:01:00 2019        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; termProject                                  ;
 ; Top-level Entity Name              ; termProject                                  ;
@@ -50,7 +50,7 @@ applicable agreement for further details.
 ;     Total combinational functions  ; 123 / 114,480 ( < 1 % )                      ;
 ;     Dedicated logic registers      ; 0 / 114,480 ( 0 % )                          ;
 ; Total registers                    ; 0                                            ;
-; Total pins                         ; 68 / 529 ( 13 % )                            ;
+; Total pins                         ; 60 / 529 ( 11 % )                            ;
 ; Total virtual pins                 ; 0                                            ;
 ; Total memory bits                  ; 0 / 3,981,312 ( 0 % )                        ;
 ; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                              ;
@@ -63,7 +63,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/10/2019 02:22:58 ;
+; Start date & time ; 04/11/2019 01:00:15 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; termProject         ;
 +-------------------+---------------------+
@@ -74,7 +74,7 @@ applicable agreement for further details.
 +------------------------------------+-----------------------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                    ; Value                                               ; Default Value ; Entity Name ; Section Id     ;
 +------------------------------------+-----------------------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID              ; 79871132962354.155483057815516                      ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID              ; 79871132962354.155491201512540                      ; --            ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP             ; 85                                                  ; --            ; --          ; --             ;
 ; MIN_CORE_JUNCTION_TEMP             ; 0                                                   ; --            ; --          ; --             ;
 ; MISC_FILE                          ; C:/altera/91sp2/quartus/termProject/termProject.dpf ; --            ; --          ; --             ;
@@ -90,11 +90,11 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:02     ; 1.0                     ; 231 MB              ; 00:00:03                           ;
-; Fitter                    ; 00:00:14     ; 1.0                     ; 413 MB              ; 00:00:15                           ;
-; Assembler                 ; 00:00:05     ; 1.0                     ; 454 MB              ; 00:00:06                           ;
-; TimeQuest Timing Analyzer ; 00:00:03     ; 1.0                     ; 316 MB              ; 00:00:03                           ;
-; Total                     ; 00:00:21     ; --                      ; --                  ; 00:00:24                           ;
+; Analysis & Synthesis      ; 00:00:04     ; 1.0                     ; 231 MB              ; 00:00:04                           ;
+; Fitter                    ; 00:00:28     ; 1.0                     ; 413 MB              ; 00:00:29                           ;
+; Assembler                 ; 00:00:11     ; 1.0                     ; 454 MB              ; 00:00:10                           ;
+; TimeQuest Timing Analyzer ; 00:00:06     ; 1.0                     ; 316 MB              ; 00:00:06                           ;
+; Total                     ; 00:00:43     ; --                      ; --                  ; 00:00:43                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

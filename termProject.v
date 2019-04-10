@@ -1,7 +1,7 @@
 module termProject(
 	input [16:0] SW,
 	output reg [0:6] HEX7,HEX6,HEX5,HEX4,HEX1,HEX0,
-	output reg [8:0] LEDG
+	output reg [8:8] LEDG
 	);
 	wire [3:0]result_out1,result_out2;
 	wire [3:0]temp_sub_out1,temp_sub_out2,temp_sum_out1,temp_sum_out2;
